@@ -1,2 +1,26 @@
 
-{{ui-checkbox class="toggle" label="I start checked!" checked=pre_checked onChange=(action (mut pre_checked))}}
+<div class="row">
+  <div class="col" style="margin-left: 15%;">
+{{#each model.data as |feature|}}
+<br/> {{ui-checkbox class="toggle" label=feature.name checked=feature.pre_checked onChange=(action (mut feature.pre_checked))}}
+
+
+{{/each}}
+
+
+
+</div>
+ <div class="col">
+
+{{#each selectedFeatures as |feature|}}
+<br/>{{feature.name}} 
+{{/each}}
+ </div>
+   <div class="col">
+
+       {{#link-to 'predictfor'}} >>>>> NEXT >>>>>{{/link-to}}
+
+   </div>
+
+
+</div>

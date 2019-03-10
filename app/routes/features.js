@@ -4,7 +4,9 @@ export default Route.extend({
 
 
     model(){
-        return {"data":["passedemissions","mpg","cylinders","displacement","horsepower",	
-        "weight",	"acceleration",	"modelyear",	"carname"]}
+        return {"data":[{"name":"passedemissions", "pre_checked":false},
+        {"name":"mpg", "pre_checked":true},
+        {"name":"speed", "pre_checked":false},
+    ]}
     }
 });
