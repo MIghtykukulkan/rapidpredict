@@ -1,1 +1,30 @@
-{{outlet}}
+
+
+
+<div class="row">
+  <div class="col"></div>
+  <div class="col" style="margin-left: 15%;">
+
+ 
+      {{#file-upload name="photos"
+                     for="upload-photo"
+                     accept="text/csv"
+                     multiple=true
+                     onfileadd=(route-action "uploadImage")}}
+       
+         
+
+          {{#if queue.files.length}}
+            Uploading...
+          {{else}}
+           <a tabindex=0 class="btn">Upload</a>
+          {{/if}}
+ 
+      {{/file-upload}}
+      
+      {{#if next}}
+          {{#link-to 'features'}} >>>>> NEXT >>>>>{{/link-to}}
+      {{/if}}
+  </div>
+  <div class="col"></div>
+</div>
