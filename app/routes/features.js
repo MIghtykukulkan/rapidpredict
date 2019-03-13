@@ -11,10 +11,16 @@ export default Route.extend({
         var headerArray = uploadInfo.headers;
         console.log(headerArray)
      
-        for(var item=0;item< headerArray.length; headerArray){
+        for(var item=0;item< headerArray.length; item++){
             itemlist.data.push({"name":headerArray[item], "pre_checked":false})
         }
 
         return itemlist;
+    },
+
+    actions: {
+        loading: function(transition, originalRoute){
+           return true;
+        }
     }
 });
