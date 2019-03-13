@@ -6,19 +6,17 @@ export default Service.extend({
 
     init() {
       this._super(...arguments);
-      this.set('items', []);
+      this.set('items', {});
     },
   
-    add(item) {
-      this.items.pushObject(item);
+    add(key,value) {
+      this.items[key] = value;
     },
-  
-    remove(item) {
-      this.items.removeObject(item);
-    },
-  
-    empty() {
-      this.items.clear();
+     
+
+    read(key){
+        return this.items[key];
     }
+  
   
 });
