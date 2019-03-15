@@ -7,8 +7,15 @@ export default Route.extend({
 
         var selectedFeatures = featureController.get('selectedFeatures');
 
-        console.log(selectedFeatures)
+        selectedFeatures = ['feature1', 'feature2', 'feature3'];
 
-        return selectedFeatures;
+        var features = [];
+        for(var i=0; i< selectedFeatures.length; i++){
+            console.log(i)
+            features.push({'name':selectedFeatures[i]});
+        }
+
+        console.log(features)        
+        return features;
     }
 });

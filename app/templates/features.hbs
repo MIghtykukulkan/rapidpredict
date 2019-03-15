@@ -1,28 +1,35 @@
-
 <h1> Choose the parameters that would have effect on the outcome </h1>
-
 <div class="row">
-  <div class="col" style="margin-left: 15%;">
-{{#each model.data as |feature|}}
-<br/> {{ui-checkbox class="toggle" label=feature.name checked=feature.pre_checked onChange=(action (mut feature.pre_checked))}}
-
-
-{{/each}}
-
-
-
-</div>
- <div class="col">
-
-{{#each selectedFeatures as |feature|}}
-<br/>{{feature.name}} 
-{{/each}}
- </div>
+   <div class="col" style="margin-left: 15%;">
+      {{#each model.data as |feature|}}
+      <br/> {{ui-checkbox class="toggle" label=feature.name checked=feature.pre_checked disabled=next onChange=(action (mut feature.pre_checked))}}
+      {{/each}}
+   </div>
+   <div class="col">
+     <div class="container">
+      <div class="panel panel-default">
+         <div class="panel-body">
+            {{#each selectedFeatures as |feature|}}
+            <br/>{{feature.name}} 
+            {{/each}}
+         </div>
+      </div>
+      <hr>
+      <div class="panel panel-default">
+         <div class="panel-body">
+            {{#each remainingFeatures as |feature|}}
+            <br/>{{feature.name}} 
+            {{/each}}
+         </div>
+      </div>
+   </div>
+   </div>
    <div class="col">
 
-       {{#link-to 'predictfor'}} >>>>> NEXT >>>>>{{/link-to}}
-
+     {{#if next}}
+      {{#link-to 'labels'}} >>>>> NEXT >>>>>{{/link-to}}
+      {{else}}
+      <button class="btn btn-primary" {{action 'redirectolabel'}}>Done</button>
+      {{/if}}
    </div>
-
-
 </div>

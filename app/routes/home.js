@@ -14,10 +14,9 @@ export default Route.extend({
   },
 
   uploadPhoto: task(function * (file) {
-      let response = yield file.upload('https://predictcore.herokuapp.com/uploadscv');
+      let response = yield file.upload('https://predictcore.herokuapp.com/uploadcsv');
      
       if(response.status === 200){
-      
         this.get('localmemory').add("uploadinfo", response.body)
         mycontroller.set('next', true)      
       }

@@ -1,4 +1,23 @@
 
-{{#each model as |feature|}}
-<br/>{{feature.name}} 
-{{/each}}
+
+
+<div class="row">
+    <div class="col"></div>
+     <div class="col">
+        {{#each model as |feature|}}
+        <br/>{{feature.name}} : {{input type="text" value=feature.val}}<br/>
+        {{/each}}
+        <br/>
+        Select your test Data size: {{progressOne}}
+        <br/>
+        0
+        {{input value=progressOne type="range" min=0 max=100}}100
+     </div>
+     
+      <div class="col">
+          {{#each model as |feature|}}
+        <br/>{{feature.val}} 
+        {{/each}}
+
+      </div>
+</div>

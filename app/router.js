@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('predictfor');
   this.route('results');
   this.route('labels');
+  this.route('mypage');
 });
 
 export default Router;

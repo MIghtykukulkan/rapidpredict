@@ -15,6 +15,7 @@ export default Route.extend({
             itemlist.data.push({"name":headerArray[item], "pre_checked":false})
         }
 
+        
         return itemlist;
     },
 
