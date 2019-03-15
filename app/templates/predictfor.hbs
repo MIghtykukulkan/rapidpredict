@@ -11,13 +11,15 @@
         Select your test Data size: {{progressOne}}
         <br/>
         0
-        {{input value=progressOne type="range" min=0 max=100}}100
+        {{input value=progressOne type="range" min=0 max=datasize}} {{datasize}}
      </div>
      
       <div class="col">
-          {{#each model as |feature|}}
-        <br/>{{feature.val}} 
+        {{#each model as |feature|}}
+                <br/>{{feature.val}} 
         {{/each}}
+
+        <button class="btn btn-primary" {{action 'redirectTo'}}>Submit</button>
 
       </div>
 </div>

@@ -17,8 +17,10 @@ export default Route.extend({
       let response = yield file.upload('https://predictcore.herokuapp.com/uploadcsv');
      
       if(response.status === 200){
-        this.get('localmemory').add("uploadinfo", response.body)
-        mycontroller.set('next', true)      
+        this.get('localmemory').add("uploadinfo", response.body);
+        this.get('localmemory').add("data-size", response.body['data-size']);
+        console.log(response.body);
+        mycontroller.set('next', true);      
       }
   }).maxConcurrency(1).enqueue(),
 

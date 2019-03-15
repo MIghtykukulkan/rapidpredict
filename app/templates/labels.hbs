@@ -19,9 +19,10 @@
    </div>
    <div class="col" >
  
-
-      {{#if label}}
-      {{#link-to 'predictfor'}} >>>>> NEXT >>>>>{{/link-to}}
+      {{next}}
+      
+      {{#if next}}
+          {{#link-to 'predictfor'}} >>>>> NEXT >>>>>{{/link-to}}
       {{else}}
       <button class="btn btn-primary" {{action 'redirectTo'}}>Done</button>
       {{/if}}

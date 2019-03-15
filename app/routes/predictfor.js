@@ -1,21 +1,19 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
-
+    localmemory: service(),
     model(){
-        let featureController = this.controllerFor('features')
-
-        var selectedFeatures = featureController.get('selectedFeatures');
-
-        selectedFeatures = ['feature1', 'feature2', 'feature3'];
+        var selectedFeatures =  this.get('localmemory').read('selectedfeatures');
+        this.controllerFor('predictfor')
+        .set('datasize',this.get('localmemory').read('data-size'));
+        //var selectedFeatures = ['feature1', 'feature2', 'feature3'];
 
         var features = [];
         for(var i=0; i< selectedFeatures.length; i++){
-            console.log(i)
             features.push({'name':selectedFeatures[i]});
         }
 
-        console.log(features)        
         return features;
     }
 });
