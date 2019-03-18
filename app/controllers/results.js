@@ -4,9 +4,19 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
     localmemory: service(),
     actions:{
+        openModal: function(name) {
+            console.log("yes somethig is happening");
+            Ember.$('.ui.' + name + '.modal').modal('show');
+          },
+      
+          closeModal: function(element, component) {
+      
+            return true;
+          },
+      
         predict:function(algo){
             
-            
+            Ember.$('.ui.' + 'waiting' + '.modal').modal('show');
             var testSize = this.get('localmemory').read('test-size');
             var features = this.get('localmemory').read('selectedfeatures');
             var label = this.get('localmemory').read('selectedLabel');
@@ -27,12 +37,14 @@ export default Controller.extend({
                 predictData.predictionPoint = predictionPoint;
                 predictData.path = path;
                 console.log(JSON.stringify(predictData))
-               // var predictData = {"options":{"kvalue":10,"strategy":"OCC","testSize":"21","dataColumns":["cylinders","displacement"],"labelColumns":["mpg"]},"predictionPoint":[8,390],"path":"uploads/1a115c8cdcccc04838a74d7feae64bb4"};
+                //var predictData = {"options":{"kvalue":10,"strategy":"OCC","testSize":"21","dataColumns":["cylinders","displacement"],"labelColumns":["mpg"]},"predictionPoint":[8,390],"path":"uploads/1a115c8cdcccc04838a74d7feae64bb4"};
 
                 Ember.$.post(
                     'https://predictcore.herokuapp.com/predict-knn',
                     predictData, // or JSON.stringify ({name: 'jonas'}),
-                    function(response) { console.log(response); },
+                    function(response) {
+                        Ember.$('.ui.' + 'waiting' + '.modal').modal('hide');
+                        console.log(response); },
                     'json');
 
             }

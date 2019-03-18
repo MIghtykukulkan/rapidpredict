@@ -1,11 +1,50 @@
 
 
-<button class="btn btn-primary" {{action 'predict' algo}}>PREDICT</button>
 
 <div class='row'>
     <div class = 'col'>
-        <button class="btn btn-primary" {{action 'predict' 'knn'}}>PREDICT</button>
-    </div>
+        <button class="btn btn-primary" {{action 'predict' 'knn'}}>TRAIN</button>
+
+        {{#if trained}}
+            <button  {{action 'openModal' 'profile'}} class="btn btn-primary">
+            Predict
+            </button>
+        {{/if}}
+        </div>
     <div class = 'col'></div>
     <div class = 'col'></div>
 </div>
+
+
+{{#ui-modal name="profile" class="profile" onApprove=(action 'closeModal')}}
+  <i class="close icon"></i>
+  <div class="header">
+    Report
+  </div>
+ 
+  <div class="actions">
+    <div class="ui black deny button">
+      Close
+    </div>
+  </div>
+
+  <div class="content">
+      loreium ipsum
+  </div>
+
+{{/ui-modal}}
+
+
+{{#ui-modal name="loader" class="waiting" onApprove=(action 'closeModal')}}
+<div class="centerload">
+    <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+    <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+    <span class="sr-only">Loading...</span>
+    </div>
+</div>
+{{/ui-modal}}

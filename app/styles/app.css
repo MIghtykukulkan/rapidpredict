@@ -3,6 +3,12 @@
     overflow: hidden;
     display: inline-block;
   }
+
+  
+.centerload {
+  margin-left: 45%;
+  margin-top: 15%;
+}
   
   .btn {
     border: 2px solid gray;
