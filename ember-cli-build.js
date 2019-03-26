@@ -8,6 +8,10 @@ module.exports = function(defaults) {
       'bootstrapVersion': 4,
       'importBootstrapFont': false,
       'importBootstrapCSS': true
+    },
+    'emberHighCharts': {
+      'includeHighCharts': false,
+      'includeHighStock': true
     }
   });
 
