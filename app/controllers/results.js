@@ -73,13 +73,18 @@ export default Controller.extend({
                         controller.set('prediction', response.prediction);
                         controller.set('testreport', response.test_report);
                         var report = response.test_report;
-                        var counter = 0;
+                        var counter = 0;             
+                        var sumofDifference = 0;
                         for(var item of report)
                         {
+                            sumofDifference = sumofDifference + (item.actual - item.predicted)^2;
                             xdata.push(counter++);
                             actual.push(item.actual);
                             predicted.push(item.predicted);
                         }
+
+                        var mse = sumofDifference / counter;
+                        controller.set('accuracy', mse);
 
                         controller.set('xdata',xdata);
                         controller.set('actual',actual);
